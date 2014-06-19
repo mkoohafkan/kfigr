@@ -18,8 +18,8 @@ type
   if(missing(type)){
     if(!label %in% names(get("index", envir=anchorenv)))
       stop("When referencing an undefined figr, you must specify the figr type.")
-	else
-	  type <- get("index", envir=anchorenv)[[label]]
+    else
+      type <- get("index", envir=anchorenv)[[label]]
   }
   # get reference
   if(prefix)
