@@ -1,0 +1,3 @@
+import(knitr)
+export(figr)
+export(anchors)

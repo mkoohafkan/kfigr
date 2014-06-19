@@ -1,0 +1,13 @@
+Package: kfigr
+Title: Integrated chunk anchoring and referencing for knitr documents.
+Version: 1.0
+Date: 2014-06-18
+Author: Michael Koohafkan
+Maintainer: Michael Koohafkan <michael.koohafkan@gmail.com>
+Description: kfigr is a streamlined version of figr designed for tight integration with knitr. The package defines a hook for anchoring code chunks and the ability to track and cross-reference chunks for producing document elements like figures, tables and code blocks.
+Depends: R (>= 3.1.0)
+Imports: knitr (>= 1.6)
+Suggests: bibtex, ggplot2
+LazyData: true
+VignetteBuilder: knitr
+License: GPL-2

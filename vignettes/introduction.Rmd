@@ -1,0 +1,93 @@
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{introduction to kfigr}
+
+```{r setup, echo=FALSE, message=FALSE}
+require(knitr)
+require(kfigr)
+opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+Introducing kfigr: a streamlined, knitr-integrated version of figr
+------------------------------------------------------------------
+
+### Why kfigr? ###
+
+The `kfigr` package was developed shortly after completion of `figr` version 1. During the development phase of `figr` it became apparent that anchoring and cross-referencing in knitr markdown documents could be simplified with minimal loss of useability by limiting anchoring and cross-referencing to  knitr chunks. The advantages of this approach are
+
+1. Special code for placing figures and tables is no longer needed, reducing usage to just one function and one code chunk option. Any chunk can be anchored regardless of the output.
+2. Captioning is separated from cross-referencing. Captioning functionality is no longer provided, but users can specify their own hooks for adding captions. The package `kexfig` is under development and will provide a figure captioning hook along with a way to place external files (e.g. images) while taking advantage of knitr chunk options.
+3. The labels used to reference objects now correspond to chunk labels, which makes it less likely for referencing mistakes to occur.
+4. Defining anchors as a chunk option improve document readability by forcing users to write distinct chunks for any referenced output. For example, if you want to refer to both a figure and the code used to create the figure you must write the example code and generate the figure in separate chunks. This forced structuring at the source level makes it easier for readers to compare a document to the code used to generate said document.
+5. Users have complete flexibility to define numbering groups for distinguishing between e.g. figures and tables.
+6. Global options for `kfigr` are defined as new `knitr` options, rather than existing as a separate entity.
+
+### How does it work? ###
+
+It's very simple! `kfigr` defines a custom hook, `anchor`, which `kfigr` uses to decide how to track the chunk. We refer to an anchored chunk as a "figr", and every figr has a distinct type. For instance, if a user wants to create a figure to refer to later, they might pass `anchor="figure"`. This tells `figr` that the current chunk is a special kind of chunk (a **figr**) of type "figure" that needs to be anchored in the document. `kfigr` prints an HTML anchor tag to the document and assigns a number to the figr based on its type. As an example, consider the following chunk. 
+
+```{r first, anchor="figure"}
+require(ggplot2)
+qplot(rnorm(100), geom="histogram")
+```
+
+I named the chunk "first" and used the chunk option `anchor="figure"`. Now, I will use the function `figr('first')` in an inline chunk to reference the chunk: `r figr('first')`.
+
+Like the `figr` package, you can cite a chunk before you actually define it. It is up to you to ensure a cited chunk is defined. Furthermore, if you want to cite a later chunk, you must first cite intervening chunks (this can be done using `invisible(figr(label))`. This is really a limitation of markdown and the fact that the HTML code is produced sequentially; if you need smarter referencing capabilities, consider using LaTeX instead of markdown.
+
+You can pass `prefix=TRUE` or change the [global options](#setting-global-options) to get a full label, e.g. `r figr('second', TRUE, type="figure")`.
+
+```{r second, anchor="figure"}
+qplot(runif(100), geom="density")
+```
+
+The method of anchoring and referencing a chunk is not affected by chunk options or output, as shown in `r figr('third', TRUE, type="table")`:
+
+```{r third, anchor="table", results='asis'}
+kable(head(iris, 6))
+```
+
+Anchoring even works for chunks that use the `ref.label` option. For instance, consider the following code:
+
+```{r fourth, eval=FALSE}
+x = 1:20
+y = x + rnorm(20)
+qplot(x,y, geom="line")
+```
+
+I have not anchored the above chunk and the code was not evaluated because I used the chunk option `eval=FALSE`. If I had used `echo=FALSE` you would have no idea that the chunk even existed! But I can anchor the next chunk and use `ref.label` to reproduce the chunk, as shown in `r figr('fifth', TRUE, type="block")`.
+
+```{r fifth, ref.label='fourth', anchor="block"}
+```
+
+This also works if you create an empty chunk with the same name as a previously defined chunk (see `knitr` documentation for details). If you want to reference both the code and the figure separately you can use `ref.label` instead and specify an anchor for each referring chunk, like so:
+
+```{r fifth, echo=FALSE, eval=FALSE}
+x = 1:20
+y = x + rlnorm(20)
+qplot(x,y, geom="line")
+```
+
+```{r fifth-code, ref.label='fifth', anchor="block", eval=FALSE}
+```
+
+```{r fifth-plot, ref.label='fifth', anchor="figure", echo=FALSE}
+```
+
+And you can verify that `r figr('fifth-code', TRUE)` and `r figr('fifth-plot', TRUE)` are distinct.
+
+`kfigr` tracks figrs internally. If you want to get a list of indexed figrs, use the `anchor()` function:
+
+
+```{r anchors-def, anchor="block"}
+str(anchors())
+```
+
+As shown in `r figr('anchors-def', TRUE)`, `anchors()` returns a structure that lists the labels by figr type, a reference history, and an index.
+
+<a name="setting-global-options"></a>
+### Setting global options ###
+
+`kfigr` uses knitr_opts to maintain global default settings. `kfigr` option names are identified by the prefix "kfigr", such as `kfigr.link` (to display a link to the anchor in citations) or `kfigr.prefix` to include the prefix when referencing. These options can be changed using `opts_knit$get` and `opts_knit$set`. Any global options set within a chunk will not be available in that particular chunk (see `knitr` documentation for more details). 
+
+### A note on Tangle ###
+An important limitation of tangle is that inline code chunks are not evaluated. Under most circumstances the Tangle code should produce the same figr numbers as the knitted document, but discrepancies are possible. If it is important that the tangle output code should reproduce the source document exactly, you should cite figrs in hidden code chunks first, rather than in inline chunks. In either case, the tangled code should still run without errors. 
