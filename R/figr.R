@@ -27,7 +27,7 @@ type
   else
     txt <- index(label, type)
   if(link)
-    paste("[", txt, "](#", label, ")", sep="")
+    paste('<a href="#', label,  '">', txt, "</a>", sep="")
   else
     txt
 ### a text or url reference to the figr
