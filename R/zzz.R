@@ -1,9 +1,9 @@
 .onLoad = function(libname, pkgname){ 
   # default options
-  eval(opts_knit$set(kfigr.link=TRUE, kfigr.prefix=FALSE), 
+  evalq(opts_knit$set(kfigr.link=TRUE, kfigr.prefix=FALSE), 
        envir=getNamespace('knitr'))
   # anchor hook definition
-  eval(
+  evalq(
     knit_hooks$set(anchor = function(before, options, envir) {
       if (before){  
         invisible(index(options$label, options$anchor))
