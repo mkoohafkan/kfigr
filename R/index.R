@@ -1,13 +1,11 @@
 index <- function#chunk indexing
-### index a chunk with figr
+### (internal) index a chunk. This function should not be called by the user directly.
+##seealso<<\code{\link{figr}}, \code{\link{anchors}}
 (label,
-### the chunk label
+### the chunk label.
 type
-### the type of figr to be indexed
+### the type of chunk to be indexed.
  ){
-  ##details<<This is an internal function used by kfigr. It is not designed 
-  ##to be called by the user directly.
-  ##seealso<<\code{\link{figr}}, \code{\link{anchors}}
   if (!type %in% get("types", envir=anchorenv)){  # check or define the figr type
     assign("types", c(get("types", envir=anchorenv), type), 
 	       envir=anchorenv)
@@ -37,5 +35,5 @@ type
   assign("history", updatehist(get("history", envir=anchorenv), match.call()),
          envir=anchorenv)  
   return(number)
-### rank of the indexed figr
+### rank of the indexed figr.
 }

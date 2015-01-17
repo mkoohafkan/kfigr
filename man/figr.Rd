@@ -1,16 +1,16 @@
 \name{figr}
 \alias{figr}
 \title{code chunk reference}
-\description{use figr to reference a code chunk}
+\description{use figr to reference a code chunk.}
 \usage{figr(label, prefix, link, type)}
 \arguments{
-  \item{label}{the code chunk label}
-  \item{prefix}{logical: return the figr prefix along with the rank}
+  \item{label}{the code chunk label.}
+  \item{prefix}{logical: return the figr prefix along with the rank.}
   \item{link}{Logical: Place a link to the anchor?}
-  \item{type}{the type of figr specified}
+  \item{type}{the type of the referenced chunk.}
 }
 
-\value{a text or url reference to the figr}
+\value{a text or url reference to the figr.}
 
 \author{Michael Koohafkan}
 

@@ -1,13 +1,13 @@
 figr <- structure(function#code chunk reference
-### use figr to reference a code chunk
+### use figr to reference a code chunk.
 (label, 
-### the code chunk label
+### the code chunk label.
 prefix,
-### logical: return the figr prefix along with the rank
+### logical: return the figr prefix along with the rank.
 link,
 ### Logical: Place a link to the anchor?
 type
-### the type of figr specified
+### the type of the referenced chunk.
 ){
   # get defaults if needed
   if(missing(prefix))
@@ -30,7 +30,7 @@ type
     paste('<a href="#', label,  '">', txt, "</a>", sep="")
   else
     txt
-### a text or url reference to the figr
+### a text or url reference to the figr.
 }, ex = function(){
   figr("test", type="reference")
   figr("test")

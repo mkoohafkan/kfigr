@@ -1,7 +1,8 @@
 anchors <- structure(function()#anchor index
-### retrieve a copy of the anchor index used by kfigr
+### retrieve a copy of the anchor index used by kfigr. The anchor index cannot 
+### be modified by the user, but are able to view it for code verification and 
+### troubleshooting.
 {
-##details<<The anchor index cannot be modified by the user, but are able to view it for code verification and troubleshooting.
   types <- get('types', envir=anchorenv)
   formathist <- function(x){
     if(length(x) > 0)
