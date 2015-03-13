@@ -16,3 +16,8 @@
   assign("index", list(), envir=anchorenv)
   assign("history", list(), envir=anchorenv)
 }
+
+.onAttach = function(libname, pkgname){
+  packageStartupMessage("kfigr is for use with RMarkdown documents only.\n",
+    "It has not been tested for compatibility with pandoc.")
+}

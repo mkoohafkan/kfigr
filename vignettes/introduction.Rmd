@@ -1,5 +1,5 @@
 %\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{introduction to kfigr}
+%\VignetteIndexEntry{kfigr-intro}
 
 ```{r setup, echo=FALSE, message=FALSE}
 require(knitr)
@@ -22,60 +22,61 @@ Introducing kfigr
 
 `kfigr` defines a custom hook, `anchor`, which is used to decide how to track the chunk. We use this hook to define a "type" for the chunk. For instance, if I create a plot and want to refer it later I can pass the chunk option `anchor="figure"`. `kfigr` uses the chunk label to generate an HTML anchor tag above the chunk and assigns a number to the chunk based on its type. As an example, consider the following chunk. 
 
-```{r first, anchor="figure"}
+```{r first-chunk, anchor="figure"}
 require(ggplot2)
 qplot(rnorm(100), geom="histogram")
 ```
 
-I named the chunk "first" and used the chunk option `anchor="figure"`. Now, I will use the function `figr('first')` in an inline chunk to reference the chunk here: `r figr("first")`. `figr` returns the number of the referenced chunk as a markdown link, e.g. `[1](#first)`. `kfigr` keeps track of reference numbers by tracking the chunk placement sequence separately for each "type".  Note that the value of the `anchor` option is case sensitive, so "Figure" is different from "figure".
+I named the chunk "first-chunk" and used the chunk option `anchor="figure"`. Now, I will use the function `figr('first-chunk')` in an inline chunk to reference the chunk here: `r figr("first-chunk")`. The `figr` function returns the number of the referenced chunk as a markdown link, e.g. `[1](#first-chunk)`. `kfigr` keeps track of reference numbers by tracking the chunk placement sequence separately for each "type".  Note that the value of the `anchor` option is case sensitive, so "Figure" is different from "figure".
 
 If you need to, you can reference a chunk before you define it. You must specify the "type" when referencing a later chunk, and it is up to you to ensure every chunk you reference is defined. Furthermore, if you want to refer to e.g. the sixth "figure" chunk, you must first reference chunks 1-5 of type "figure". This can be done inline using `invisible(figr(...))`. This limitation is due to the way markdown documents are rendered; if you need smarter referencing capabilities, consider using LaTeX (Rnw) instead of markdown (Rmd).
 
-You can pass `prefix=TRUE` or change the [global options](#setting-global-options) to get a full label, e.g. `r figr("second", TRUE, type="figure")`.
+You can pass `prefix=TRUE` or change the [global options](#setting-global-options) to get a full label, e.g. `r figr("second-chunk", TRUE, type="figure")`.
 
-```{r second, anchor="figure"}
+```{r second-chunk, anchor="figure"}
 qplot(runif(100), geom="density")
 ```
 
-You can reference any kind of chunk output, and specify any "type" of chunk. For example, look at `r figr("third", TRUE, type="table")`:
+You can reference any kind of chunk output, and specify any "type" of chunk. For example, look at `r figr("third-chunk", TRUE, type="table")`:
 
-```{r third, anchor="table", results='asis'}
+```{r third-chunk, anchor="table", results='asis'}
 kable(head(iris, 6))
 ```
 
 Anchoring even works for chunks that use the `ref.label` option. For instance, consider the following code:
 
-```{r fourth, eval=FALSE}
+```{r fourth-chunk, eval=FALSE}
 x = 1:20
 y = x + rnorm(20)
 lm(y~x)
 ```
 
-I have not anchored the above chunk and the code was not evaluated because I used the chunk option `eval=FALSE`. If I had used `echo=FALSE` you would have no idea that the chunk even existed! But I can reproduce the chunk by creating an empty chunk with the same name (see the `knitr` documentation for more details) and anchor the empty chunk, as shown in `r figr('fourth', TRUE, type="block")`. 
+I have not anchored the above chunk and the code was not evaluated because I used the chunk option `eval=FALSE`. If I had used `echo=FALSE` you would have no idea that the chunk even existed! But I can reproduce the chunk by creating an empty chunk with the same name (see the `knitr` documentation for more details) and anchor the empty chunk, as shown in `r figr('fourth-chunk', TRUE, type="block")`. 
 
-```{r fourth, anchor="block"}
+```{r fourth-chunk, anchor="block"}
 ```
 
 If you want to reference both the code and the output of a chunk separately you can use the chunk option `ref.label` and specify an anchor for each referring chunk. Below, I create a hidden chunk and reference it using eval=FALSE to produce the code block. I then reference the hidden chunk a second time using echo=FALSE to produce only the output. 
 
-```{r fifth, echo=FALSE, eval=FALSE}
+```{r fifth-chunk, echo=FALSE, eval=FALSE}
 df <- data.frame(x=x, y=y)
 ggplot(df, aes(x=x, y=y)) + geom_smooth(method="lm") + 
 geom_point(pch=21, color="black", fill="red")
 ```
 
-```{r fifth-code, ref.label='fifth', anchor="block", eval=FALSE}
+```{r fifth-code, ref.label='fifth-chunk', anchor="block", eval=FALSE}
 ```
 
-```{r fifth-plot, ref.label='fifth', anchor="figure", echo=FALSE}
+```{r fifth-plot, ref.label='fifth-chunk', anchor="figure", echo=FALSE}
 ```
 
 You can verify that `r figr('fifth-code', TRUE)` and `r figr('fifth-plot', TRUE)` are distinct.
 
-`kfigr` tracks references internally. If you want to get a list of indexed chunks, you can use `anchors()` to return a structure that lists the labels by type, a reference history, and an index, as shown in `r figr('anchors-def', TRUE, type="block")`. The `history` attribute can be helpful for troubleshooting problems with document references.
+`kfigr` tracks references internally. If you want to get a list of indexed chunks, you can use `anchors()` to return a structure that lists the labels by type, a reference history, and an index, as shown in `r figr('last-chunk', TRUE, type="block")`. The `history` attribute can be helpful for troubleshooting problems with document references.
 
-```{r anchors-def, anchor="block"}
-str(anchors())
+```{r last-chunk, anchor="block"}
+anchors("index")
+anchors("history")
 ```
 
 <a name="setting-global-options"></a>

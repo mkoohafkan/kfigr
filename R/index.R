@@ -18,7 +18,7 @@ type
 	       envir=anchorenv)
   }
   # get the figr index
-  number <- grep(label, anchors()[[type]])
+  number <- grep(label, anchors(type))
   # update history
   updatehist <- function(h, caller){
     caller=deparse(caller)
