@@ -1,7 +1,7 @@
 \name{anchors}
 \alias{anchors}
-\title{anchor information}
-\description{retrieves kfigr diagnostics such as the anchor index and history. Use for 
+\title{Anchor Information}
+\description{Retrieves diagnostics such as the anchor index and history. Use for 
 code verification and troubleshooting. Also used internally by kfigr.}
 \usage{anchors(tag)}
 \arguments{

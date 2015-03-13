@@ -6,7 +6,7 @@
   evalq(
     knit_hooks$set(anchor = function(before, options, envir) {
       if (before){  
-        invisible(index(options$label, options$anchor))
+        invisible(kfigr:::index(options$label, options$anchor))
         paste('<a name="', options$label, '"></a>', sep='')
       }
     }), envir=getNamespace('knitr'))

@@ -1,5 +1,5 @@
-anchors <- structure(function#anchor information
-### retrieves kfigr diagnostics such as the anchor index and history. Use for 
+anchors <- structure(function#Anchor Information
+### Retrieves diagnostics such as the anchor index and history. Use for 
 ### code verification and troubleshooting. Also used internally by kfigr.
 (tag)
 ### Optional specification of return type. \code{tag = "index"} returns a
@@ -16,6 +16,7 @@ anchors <- structure(function#anchor information
   }
   formatindex <- function(x){
     d <- as.data.frame(cbind(names(x), x))
+    rownames(d) <- NULL
     names(d) <- c("label", "type")
     d["number"] <- rep(NA, length(x))
     for(i in unique(d$type))

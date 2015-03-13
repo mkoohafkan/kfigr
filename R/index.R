@@ -22,7 +22,7 @@ type
   # update history
   updatehist <- function(h, caller){
     caller=deparse(caller)
-	if(caller == "index(label = options$label, type = options$anchor)")
+	if(caller == "kfigr:::index(label = options$label, type = options$anchor)")
       called.by <- 'knit_hooks$get("anchor")'
     else if(caller == "index(label = label, type = type)")
       called.by <- "figr"
