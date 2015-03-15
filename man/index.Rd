@@ -8,7 +8,7 @@
   \item{type}{the type of chunk to be indexed.}
 }
 
-\value{rank of the indexed figr.}
+\value{rank of the indexed chunk.}
 
 \author{Michael Koohafkan}
 

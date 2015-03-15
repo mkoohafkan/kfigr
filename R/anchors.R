@@ -24,7 +24,7 @@ anchors <- structure(function#Anchor Information
     d
   }
   
-  types <- get('types', envir=anchorenv)
+  types <- get('types', envir = anchorenv)
   a <- structure(setNames(lapply(types, function(x) get(x, envir=anchorenv)), types))  
   if(missing(tag))
     return(a)

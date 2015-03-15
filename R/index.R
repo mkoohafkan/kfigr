@@ -22,8 +22,8 @@ type
   # update history
   updatehist <- function(h, caller){
     caller=deparse(caller)
-	if(caller == "kfigr:::index(label = options$label, type = options$anchor)")
-      called.by <- 'knit_hooks$get("anchor")'
+	if(caller == "index(label = options$label, type = options$anchor)")
+      called.by <- 'hook_anchor'
     else if(caller == "index(label = label, type = type)")
       called.by <- "figr"
     # really, this is the only way to append a vector as a single element
@@ -35,5 +35,5 @@ type
   assign("history", updatehist(get("history", envir=anchorenv), match.call()),
          envir=anchorenv)  
   return(number)
-### rank of the indexed figr.
+### rank of the indexed chunk.
 }

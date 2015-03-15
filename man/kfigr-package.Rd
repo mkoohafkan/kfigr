@@ -4,7 +4,7 @@
 \docType{package}
 \title{Integrated Chunk Anchoring and Referencing for R Markdown Documents}
 \description{A streamlined cross-referencing system for R Markdown
-documents that integrates with the knitr package. Defines a hook for
+documents that integrates with 'knitr'. Defines a hook for
 anchoring code chunks and a function to track and cross-reference
 chunks that produce document elements such as figures and tables.}
 \details{
