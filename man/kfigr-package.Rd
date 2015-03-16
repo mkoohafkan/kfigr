@@ -2,14 +2,15 @@
 \alias{kfigr-package}
 \alias{kfigr}
 \docType{package}
-\title{Integrated Chunk Anchoring and Referencing for R Markdown Documents}
-\description{A streamlined cross-referencing system for R Markdown
-documents that integrates with 'knitr'. Defines a hook for
-anchoring code chunks and a function to track and cross-reference
-chunks that produce document elements such as figures and tables.}
+\title{Integrated Code Chunk Anchoring and Referencing for R Markdown Documents}
+\description{A streamlined cross-referencing system for R Markdown documents
+generated with 'knitr'. R Markdown is  an authoring format for generating
+dynamic content from R. It provides a hook for anchoring code
+chunks and a function to cross-reference document elements generated from
+said chunks, e.g. figures and tables.}
 \details{
 \tabular{ll}{Package: \tab kfigr\cr
-Title: \tab Integrated Chunk Anchoring and Referencing for R Markdown Documents\cr
+Title: \tab Integrated Code Chunk Anchoring and Referencing for R Markdown Documents\cr
 Version: \tab 1.1.0\cr
 Date: \tab 2015-03-13\cr
 Author: \tab Michael Koohafkan\cr
