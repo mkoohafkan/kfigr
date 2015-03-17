@@ -1,6 +1,6 @@
 Package: kfigr
 Title: Integrated Code Chunk Anchoring and Referencing for R Markdown Documents
-Version: 1.1.0
+Version: 1.1.1
 Date: 2015-03-16
 Author: Michael Koohafkan
 Maintainer: Michael Koohafkan <michael.koohafkan@gmail.com>
