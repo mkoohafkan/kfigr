@@ -89,4 +89,4 @@ An important limitation of `tangle` is that inline code chunks are not evaluated
 
 ### Still confused? ###
 
-Take a look at the .Rnw source file for this vignette and all should become clear.
+Take a look at the .Rmd source file for this vignette and all should become clear.
