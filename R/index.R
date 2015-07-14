@@ -7,6 +7,8 @@
 #' @param label The chunk label.
 #' @param type The type of chunk to be indexed.
 #' @return The rank of the indexed chunk.
+#'
+#' @importFrom stats setNames
 index <- function(label, type){
   if (!type %in% get("types", envir=anchorenv)){  # check or define the figr type
     assign("types", c(get("types", envir=anchorenv), type), 

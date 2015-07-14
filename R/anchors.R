@@ -19,6 +19,7 @@
 #' figr("test", type="figure")
 #' anchors()
 #'
+#' @importFrom stats setNames
 #' @export
 anchors <- function(tag){
   formathist <- function(x){
