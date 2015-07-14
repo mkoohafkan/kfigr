@@ -1,11 +1,13 @@
-index <- function#chunk indexing
-### (internal) index a chunk. This function should not be called by the user directly.
-##seealso<<\code{\link{figr}}, \code{\link{anchors}}
-(label,
-### the chunk label.
-type
-### the type of chunk to be indexed.
- ){
+#' Chunk Indexing
+#'
+#' (Internal) index a chunk. Should not be called by the user directly.
+#'
+#' @seealso \code{\link{figr}}, \code{\link{anchors}}
+#'
+#' @param label The chunk label.
+#' @param type The type of chunk to be indexed.
+#' @return The rank of the indexed chunk.
+index <- function(label, type){
   if (!type %in% get("types", envir=anchorenv)){  # check or define the figr type
     assign("types", c(get("types", envir=anchorenv), type), 
 	       envir=anchorenv)
@@ -26,7 +28,7 @@ type
       called.by <- 'hook_anchor'
     else if(caller == "index(label = label, type = type)")
       called.by <- "figr"
-    # really, this is the only way to append a vector as a single element
+    # seems to be the only way to append a vector as a single element
     h[[length(h) + 1L]] <- data.frame(label=label, type=type, 
                                       number=number, called.by=called.by,
                                       stringsAsFactors=FALSE)
@@ -35,5 +37,4 @@ type
   assign("history", updatehist(get("history", envir=anchorenv), match.call()),
          envir=anchorenv)  
   return(number)
-### rank of the indexed chunk.
 }

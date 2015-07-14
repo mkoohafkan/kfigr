@@ -1,6 +1,6 @@
 \name{hook_anchor}
 \alias{hook_anchor}
-\title{Anchor Chunk Hook Extension to \pkg{knitr}}
+\title{Anchor Chunk Hook Extension for 'knitr'}
 
 \usage{
 hook_anchor(before, options, envir)
@@ -19,9 +19,9 @@ a code chunk.
 
 \details{
 the function hook_anchor is set as a hook in \pkg{knitr} when \pkg{kfigr} is 
-attached (and removed \pkg{kfigr} is detached). It writes an HMTL anchor tag 
-directly above a code chunk in the form \code{<a name="chunk-name"></a>} where 
-\code{chunk-name} is the chunk label contained in the argument 
+attached (and removed when \pkg{kfigr} is detached). It writes an HMTL anchor 
+tag directly above a code chunk in the form \code{<a name="chunk-name"></a>} 
+where \code{chunk-name} is the chunk label contained in the argument 
 \code{options$label}.
 }
 

@@ -1,9 +1,9 @@
 Package: kfigr
 Title: Integrated Code Chunk Anchoring and Referencing for R Markdown Documents
-Version: 1.1.1
+Version: 1.1.2
 Date: 2015-03-16
-Author: Michael Koohafkan
-Maintainer: Michael Koohafkan <michael.koohafkan@gmail.com>
+Author: Michael C Koohafkan [aut, cre]
+Maintainer: Michael C Koohafkan <michael.koohafkan@gmail.com>
 Description: A streamlined cross-referencing system for R Markdown documents
     generated with 'knitr'. R Markdown is  an authoring format for generating
     dynamic content from R. 'kfigr' provides a hook for anchoring code

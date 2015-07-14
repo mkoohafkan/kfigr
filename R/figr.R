@@ -1,14 +1,25 @@
-figr <- structure(function#Code Chunk Reference
-### Reference a code chunk.
-(label, 
-### The code chunk label.
-prefix,
-### logical: return the prefix (chunk type) along with the rank.
-link,
-### Logical: Place an HTML link to the anchor?
-type
-### The type of the referenced chunk.
-){
+#' Code Chunk Reference
+#' 
+#' Reference a code chunk.
+#' 
+#' @param label The code chunk label.
+#' @param prefix Logical: return the prefix (chunk type) along with the rank. 
+#' @param link ### Logical: Place an HTML link to the anchor?
+#' @param type The type of the referenced chunk.
+#' @return A text or url reference to the code chunk.
+#'
+#' @examples
+#' figr("test", type="reference")
+#' figr("test")
+#' figr("test", TRUE, link=FALSE)
+#' if(interactive()){
+#'   require(knitr)
+#'   opts_knit$set(kfigr.prefix=TRUE, kfigr.link=TRUE)
+#'   figr("test")
+#' }
+#'
+#' @export
+figr <- function(label, prefix, link, type){
   # get defaults if needed
   if(missing(prefix))
     prefix <- opts_knit$get("kfigr.prefix")  
@@ -30,13 +41,4 @@ type
     paste('<a href="#', label,  '">', txt, "</a>", sep="")
   else
     txt
-### A text or url reference to the code chunk.
-}, ex = function(){
-  figr("test", type="reference")
-  figr("test")
-  figr("test", TRUE, link=FALSE)
-  if(interactive()){
-    opts_knit$set(kfigr.prefix=TRUE, kfigr.link=TRUE)
-    figr("test")
-  }
-})
+}
