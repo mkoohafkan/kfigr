@@ -2,6 +2,7 @@ kfigr
 =====
 
 [![Build Status](https://travis-ci.org/mkoohafkan/kfigr.svg)](https://travis-ci.org/mkoohafkan/kfigr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/kfigr)](http://cran.r-project.org/package=kfigr)
 
 kfigr is a streamlined cross-referencing system for R markdown documents that 
 integrates with the [knitr](https://github.com/yihui/knitr) package. It defines 

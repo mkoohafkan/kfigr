@@ -44,8 +44,8 @@ anchors <- function(tag){
   if(missing(tag))
     return(a)
   if(tag == "index")
-    return(formatindex(get('index', envir=anchorenv)))
+    return(formatindex(get('index', envir = anchorenv)))
   if(tag == "history")
-    return(formathist(get("history", envir=anchorenv)))
+    return(formathist(get("history", envir = anchorenv)))
   return(a[[tag]])
 }

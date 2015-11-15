@@ -10,7 +10,7 @@ Description: A streamlined cross-referencing system for R Markdown documents
     chunks and a function to cross-reference document elements generated from
     said chunks, e.g. figures and tables.
 Depends: R (>= 3.1.0)
-Imports: knitr (>= 1.6), stats
+Imports: stats, knitr (>= 1.6)
 Suggests: ggplot2
 LazyData: true
 VignetteBuilder: knitr
