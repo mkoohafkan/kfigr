@@ -12,7 +12,7 @@ document elements like figures, tables and code blocks.
 Update 2016-04-23
 -----------------
 
-I recently found out about [bookdown](bookdown.org/yihui/bookdown) which 
+I recently found out about [bookdown](https://github.com/rstudio/bookdown) which 
 provides advanced labeling and cross-referencing functionality with `pandoc`. 
 I encourage you to try `bookdown` as `kfigr` does not always play nice with 
 `pandoc` and doesn't support markdown-->PDF.
