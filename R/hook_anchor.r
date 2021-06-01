@@ -11,7 +11,7 @@
 #'   \code{<a name="chunk-name"></a>} where \code{chunk-name} is the chunk 
 #'   label contained in \code{options$label}.
 #'
-#' @references \url{http://yihui.name/knitr/hooks#chunk_hooks}
+#' @references \url{http://yihui.org/knitr/hooks#chunk-hooks}
 #'
 #' @seealso \code{\link{figr}}, \code{\link{anchors}}
 #'
