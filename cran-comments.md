@@ -1,7 +1,9 @@
-Submission of kfigr 1.2-1. 
+Resubmission of kfigr 1.2-1 
 
-Updated `suggests` to include package `markdown`
-due to recent change in package `knitr` dependencies.
+- Removed Date field from DESCRIPTION
+- Removed LazyData specification from DESCRIPTION
+- Updated invalid URL in documentation
+- Added cran-comments.md to .rbuildignore
 
 ## Test environments
 
