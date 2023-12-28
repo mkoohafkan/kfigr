@@ -1,26 +1,18 @@
-kfigr
-=====
+# kfigr
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/mkoohafkan/kfigr/workflows/R-CMD-check/badge.svg)](https://github.com/mkoohafkan/kfigr/actions)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/kfigr)](http://cran.r-project.org/package=kfigr)
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![R-CMD-check](https://github.com/mkoohafkan/kfigr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mkoohafkan/kfigr/actions/workflows/R-CMD-check.yaml)
+[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/kfigr)](http://cran.r-project.org/package=kfigr)
 <!-- badges: end -->
 
-kfigr is a streamlined cross-referencing system for R markdown documents that 
+A streamlined cross-referencing system for R markdown documents that 
 integrates with the [knitr](https://github.com/yihui/knitr) package. It defines 
 a hook for anchoring code chunks and tracks chunks for cross-referencing 
 document elements like figures, tables and code blocks.
 
-Update 2016-04-23
------------------
-
-I recently found out about [bookdown](https://github.com/rstudio/bookdown) which 
-provides advanced labeling and cross-referencing functionality with `pandoc`. 
-I encourage you to try `bookdown` as `kfigr` does not always play nice with 
-`pandoc` and doesn't support markdown-->PDF.
-
-Update 2015-07-14
------------------
-
-Version 1.2 submitted to CRAN! This version makes package attaching and 
-detaching a bit cleaner. I have also converted all documentation from 
-`inlinedocs` to `Roxygen2`. Package functionality remains unchanged.
+`{kfigr}` works only for markdown-->HTML. If you need support for
+markdown-->PDF, see the [{bookdown}](https://github.com/rstudio/bookdown)
+provides advanced labeling and cross-referencing functionality with
+`pandoc` that works with both HTML and PDF outputs.
