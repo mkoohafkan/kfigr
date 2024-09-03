@@ -1,7 +1,7 @@
 # kfigr
 
 <!-- badges: start -->
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/kfigr)](http://cran.r-project.org/package=kfigr)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kfigr)](https://cran.r-project.org/package=kfigr)
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/mkoohafkan/kfigr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mkoohafkan/kfigr/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/kfigr)](http://cran.r-project.org/package=kfigr)
